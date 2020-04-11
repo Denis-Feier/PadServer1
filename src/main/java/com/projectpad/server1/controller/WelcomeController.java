@@ -32,7 +32,7 @@ public class WelcomeController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @GetMapping("/")
+    @GetMapping("/home")
     public String welcome() {
         return "Welcome to this private page !!";
     }
