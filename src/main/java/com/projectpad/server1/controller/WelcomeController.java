@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -28,6 +29,8 @@ public class WelcomeController {
     private UserRepository userRepository;
     @Autowired
     private UserService userService;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @GetMapping("/")
     public String welcome() {
@@ -58,7 +61,7 @@ public class WelcomeController {
         try {
             userService.newUserAccount(
                     user.getUserName(),
-                    user.getPassword(),
+                    passwordEncoder.encode(user.getPassword()),
                     user.getEmail()
             );
         } catch (UserEmailExistsException ex) {
@@ -72,7 +75,8 @@ public class WelcomeController {
     public String generateToken(@RequestBody AuthRequest authRequest) {
         try {
             authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(authRequest.getUserName(), authRequest.getPassword())
+                    new UsernamePasswordAuthenticationToken(authRequest.getUserName(),
+                            authRequest.getPassword())
             );
         } catch (Exception ex) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "invalid username/password", ex);
