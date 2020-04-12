@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Generated;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -29,4 +30,8 @@ public class User {
 
     @Column(name = "role")
     private String role;
+
+    @OneToMany(targetEntity = UserToken.class,cascade = CascadeType.ALL)
+    @JoinColumn(name ="uid_fk", referencedColumnName = "id")
+    private List<UserToken> tokens;
 }

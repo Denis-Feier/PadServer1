@@ -81,6 +81,15 @@ public class WelcomeController {
         } catch (Exception ex) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "invalid username/password", ex);
         }
-        return jwtUtil.generateToken(authRequest.getUserName());
+        String token = jwtUtil.generateToken(authRequest.getUserName());
+        userService.assignToken(authRequest.getUserName(), token);
+        return token;
+    }
+
+    @GetMapping("/user/token")
+    public User findByToken(@RequestHeader(value = "Authorization") String s) {
+        System.out.println(s);
+        String t = s.substring(7);
+        return userService.findByToken(t);
     }
 }

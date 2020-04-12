@@ -1,6 +1,7 @@
 package com.projectpad.server1.repository;
 
 import com.projectpad.server1.entity.User;
+import com.projectpad.server1.entity.UserToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -16,4 +17,6 @@ public interface UserRepository extends JpaRepository<User,Integer> {
     boolean existsByUserName(String username);
 
     boolean existsByEmail(String email);
+
+    User findByTokens(UserToken token);
 }
