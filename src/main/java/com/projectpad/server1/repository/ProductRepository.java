@@ -1,4 +1,6 @@
 package com.projectpad.server1.repository;
 
-public interface ProtuctRepository {
-}
+import com.projectpad.server1.entity.Product;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ProductRepository extends JpaRepository<Product, Integer> {}
