@@ -19,7 +19,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
-public class WelcomeController {
+public class UserController {
 
     @Autowired
     private JwtUtil jwtUtil;
