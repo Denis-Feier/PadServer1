@@ -40,7 +40,7 @@ public class UserService {
     }
 
     public User assignToken(String userName, String token) {
-        User u = userRepository.findByUserName(userName);
+        User u = userRepository.findByUserName(userName).get();
         UserToken t = new UserToken();
         t.setToken(token);
         List<UserToken> ut = u.getTokens();
