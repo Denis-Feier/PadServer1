@@ -1,0 +1,209 @@
+{
+	"info": {
+		"_postman_id": "26e74465-91e0-4a5a-851f-10d1ef368165",
+		"name": "Pad 1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authenticate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"userName\": \"Levi\",\n\t\"password\": \"jmecher\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9191/authenticate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find By Email",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9191/email/denisfeier98@yahoo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"email",
+						"denisfeier98@yahoo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Account",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"userName\": \"Levi\",\n\t\"password\": \"jmecher\",\n\t\"email\": \"levi@yahoo.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9191/create/account",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"create",
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Home Test Endpoint",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJEZW5pcyIsImV4cCI6MTU4NjY3MDc5MSwiaWF0IjoxNTg2NjM0NzkxfQ.D4XmKXRO0qNyqqVgmkxAmu8Mk5OOK4QbuB7OJwcXhvc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9191/home",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"home"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find By Token",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJMZXZpIiwiZXhwIjoxNTg3MTEzMjg3LCJpYXQiOjE1ODcwNzcyODd9.IZwJdTNHWOIvo6-8voQ9Tg2XmW-wM157PCs175dG6qc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9191/user/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"user",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Products",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJMZXZpIiwiZXhwIjoxNTg3MTE0NDAzLCJpYXQiOjE1ODcwNzg0MDN9.liKOwGEzHDMnrn6GRnywNqV4pdhlk7miXVIPzHGYhUs",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9191/product/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"product",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Product By ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJMZXZpIiwiZXhwIjoxNTg3MTE0NDAzLCJpYXQiOjE1ODcwNzg0MDN9.liKOwGEzHDMnrn6GRnywNqV4pdhlk7miXVIPzHGYhUs",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9191/product/10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"product",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9191/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
