@@ -60,7 +60,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"userName\": \"Levi\",\n\t\"password\": \"jmecher\",\n\t\"email\": \"levi@yahoo.com\"\n}",
+					"raw": "{\n\t\"userName\": \"RandomName\",\n\t\"password\": \"jmecher\",\n\t\"email\": \"random@yahoo.com\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
