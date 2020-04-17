@@ -34,4 +34,7 @@ public class User {
     @OneToMany(targetEntity = UserToken.class,cascade = CascadeType.ALL)
     @JoinColumn(name ="uid_fk", referencedColumnName = "id")
     private List<UserToken> tokens;
+
+    @Column(name = "user_pic")
+    private String pic;
 }

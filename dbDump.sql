@@ -8,13 +8,17 @@ CREATE TABLE IF NOT EXISTS user_tbl
     user_name varchar(16),
     password  varchar(256),
     email     varchar(32),
-    role      varchar(10)
+    role      varchar(10),
+    user_pic  varchar(256)
 );
 
-INSERT INTO user_tbl(id, user_name, password, email, role)
-VALUES (1, 'Denis', '$2a$10$5KdOiO1s/fIWqFuZxNH.LuQVvTgGUuXkLfyJigMuIVTvHElyQW34u', 'denisfeier98@yahoo.com', 'admin'),
-       (2, 'David', '$2a$10$ONx7mnYXBK1TzAHHBZGhgey6JlIass1dpg8CIsC12hKkczGeXhCpy', 'david@yahoo.com', 'user'),
-       (3, 'Levi', '$2a$10$ug8pwEWTkFO4sID37p5MDOu8c42x9wxqvFrJL9NQRXyK4WlRvYaOq', 'Levi@yahoo.com', 'admin');
+INSERT INTO user_tbl(id, user_name, password, email, role, user_pic)
+VALUES (1, 'Denis', '$2a$10$5KdOiO1s/fIWqFuZxNH.LuQVvTgGUuXkLfyJigMuIVTvHElyQW34u',
+        'denisfeier98@yahoo.com', 'admin', 'https://thumbs.dreamstime.com/z/isolated-artistic-drawing-cat-profile-color-sketch-white-background-135822849.jpg'),
+       (2, 'David', '$2a$10$ONx7mnYXBK1TzAHHBZGhgey6JlIass1dpg8CIsC12hKkczGeXhCpy',
+        'david@yahoo.com', 'user', null),
+       (3, 'Levi', '$2a$10$ug8pwEWTkFO4sID37p5MDOu8c42x9wxqvFrJL9NQRXyK4WlRvYaOq',
+        'Levi@yahoo.com', 'admin', 'https://cdn3.iconfinder.com/data/icons/avatars-9/145/Avatar_Dog-512.png');
 
 DROP TABLE IF EXISTS token_tbl;
 
