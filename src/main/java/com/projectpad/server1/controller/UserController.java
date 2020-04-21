@@ -2,6 +2,7 @@ package com.projectpad.server1.controller;
 
 import com.projectpad.server1.entity.AuthRequest;
 import com.projectpad.server1.entity.User;
+import com.projectpad.server1.entity.UserPublic;
 import com.projectpad.server1.exception.UserEmailExistsException;
 import com.projectpad.server1.exception.UserNameExistsException;
 import com.projectpad.server1.repository.UserRepository;
@@ -88,7 +89,7 @@ public class UserController {
     }
 
     @PostMapping("/authenticate")
-    public String generateToken(@RequestBody AuthRequest authRequest) {
+    public UserPublic generateToken(@RequestBody AuthRequest authRequest) {
         logger.info("Authenticate request");
         try {
             authenticationManager.authenticate(
@@ -101,13 +102,27 @@ public class UserController {
         }
         String token = jwtUtil.generateToken(authRequest.getUserName());
         userService.assignToken(authRequest.getUserName(), token);
-        return token;
+        User userDb = userService.findByToken(token);
+        return new UserPublic(
+                userDb.getId(),
+                userDb.getUserName(),
+                userDb.getEmail(),
+                userDb.getRole(),
+                token,
+                userDb.getPic());
     }
 
     @GetMapping("/user/token")
-    public User findByToken(@RequestHeader(value = "Authorization") String s) {
+    public UserPublic findByToken(@RequestHeader(value = "Authorization") String s) {
         logger.info("Get user by token request");
         String t = s.substring(7);
-        return userService.findByToken(t);
+        User userDb = userService.findByToken(t);
+        return new UserPublic(
+                userDb.getId(),
+                userDb.getUserName(),
+                userDb.getEmail(),
+                userDb.getRole(),
+                t,
+                userDb.getPic());
     }
 }
