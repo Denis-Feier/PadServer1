@@ -1,9 +1,11 @@
 package com.projectpad.server1.service;
 
 import com.projectpad.server1.entity.User;
+import com.projectpad.server1.entity.UserPublic;
 import com.projectpad.server1.entity.UserToken;
 import com.projectpad.server1.exception.UserEmailExistsException;
 import com.projectpad.server1.exception.UserNameExistsException;
+import com.projectpad.server1.exception.UserNotFound;
 import com.projectpad.server1.repository.UserRepository;
 import com.projectpad.server1.repository.UserTokenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,5 +53,18 @@ public class UserService {
     public User findByToken(String token) {
         UserToken t = userTokenRepository.findByToken(token);
         return userRepository.findByTokens(t);
+    }
+
+    public UserPublic getUserPublicByUserName(String name) {
+        User u = userRepository.findByUserName(name)
+                .orElseThrow(() -> new UserNotFound("No user with this name!"));
+        return new UserPublic(
+                u.getId(),
+                u.getUserName(),
+                u.getEmail(),
+                u.getRole(),
+                null,
+                u.getPic()
+        );
     }
 }

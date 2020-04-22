@@ -71,7 +71,7 @@ public class UserController {
     }
 
     @PostMapping("/create/account")
-    public void createUserAccount(@RequestBody User user) {
+    public UserPublic createUserAccount(@RequestBody User user) {
         logger.info("Create new account request {}", user.toString());
         try {
             userService.newUserAccount(
@@ -86,6 +86,7 @@ public class UserController {
             logger.error("User name {} found", user.getUserName());
             throw new ResponseStatusException(HttpStatus.FOUND, "User name found", nx);
         }
+       return userService.getUserPublicByUserName(user.getUserName());
     }
 
     @PostMapping("/authenticate")
