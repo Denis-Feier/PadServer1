@@ -99,7 +99,7 @@ public class UserController {
             );
         } catch (Exception ex) {
             logger.error("Invalid username/password");
-            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "invalid username/password", ex);
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Invalid username/password", ex);
         }
         String token = jwtUtil.generateToken(authRequest.getUserName());
         userService.assignToken(authRequest.getUserName(), token);
