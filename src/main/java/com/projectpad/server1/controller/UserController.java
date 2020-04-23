@@ -1,11 +1,13 @@
 package com.projectpad.server1.controller;
 
 import com.projectpad.server1.entity.AuthRequest;
+import com.projectpad.server1.entity.Product;
 import com.projectpad.server1.entity.User;
 import com.projectpad.server1.entity.UserPublic;
 import com.projectpad.server1.exception.UserEmailExistsException;
 import com.projectpad.server1.exception.UserNameExistsException;
 import com.projectpad.server1.repository.UserRepository;
+import com.projectpad.server1.service.ProductService;
 import com.projectpad.server1.service.UserService;
 import com.projectpad.server1.util.JwtUtil;
 import org.slf4j.Logger;
@@ -33,6 +35,8 @@ public class UserController {
     private UserService userService;
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private ProductService productService;
 
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
