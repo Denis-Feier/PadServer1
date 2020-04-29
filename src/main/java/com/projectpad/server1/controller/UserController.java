@@ -1,7 +1,6 @@
 package com.projectpad.server1.controller;
 
 import com.projectpad.server1.entity.AuthRequest;
-import com.projectpad.server1.entity.Product;
 import com.projectpad.server1.entity.User;
 import com.projectpad.server1.entity.UserPublic;
 import com.projectpad.server1.exception.UserEmailExistsException;
