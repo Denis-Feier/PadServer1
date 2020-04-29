@@ -20,12 +20,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:9191/authenticate",
-					"protocol": "http",
+					"raw": "https://padserver1.herokuapp.com/authenticate",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"padserver1",
+						"herokuapp",
+						"com"
 					],
-					"port": "9191",
 					"path": [
 						"authenticate"
 					]
@@ -37,9 +38,15 @@
 			"name": "Find By Email",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJMZXZpIiwiZXhwIjoxNTg3NjgxOTY1LCJpYXQiOjE1ODc2NDU5NjV9.BLbjMnqq3gNl-HUsu3RcUotw6FXVZweGBPvaoaSVN58",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": "http://localhost:9191/email/denisfeier98@yahoo",
+					"raw": "http://localhost:9191/email/denisfeier98@yahoo.com",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -47,7 +54,7 @@
 					"port": "9191",
 					"path": [
 						"email",
-						"denisfeier98@yahoo"
+						"denisfeier98@yahoo.com"
 					]
 				}
 			},
@@ -166,12 +173,12 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJMZXZpIiwiZXhwIjoxNTg3MTE0NDAzLCJpYXQiOjE1ODcwNzg0MDN9.liKOwGEzHDMnrn6GRnywNqV4pdhlk7miXVIPzHGYhUs",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJMZXZpIiwiZXhwIjoxNTg3NjgyOTYxLCJpYXQiOjE1ODc2NDY5NjF9.LukeAEYtuOG32PMI1ID-ecbsmZnAbLfHAvd7rJbKITk",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "http://localhost:9191/product/10",
+					"raw": "http://localhost:9191/product/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -179,7 +186,7 @@
 					"port": "9191",
 					"path": [
 						"product",
-						"10"
+						"1"
 					]
 				}
 			},
