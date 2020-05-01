@@ -5,6 +5,7 @@ import com.projectpad.server1.entity.User;
 import com.projectpad.server1.entity.UserPublic;
 import com.projectpad.server1.exception.UserEmailExistsException;
 import com.projectpad.server1.exception.UserNameExistsException;
+import com.projectpad.server1.exception.UserTokenNotFound;
 import com.projectpad.server1.repository.UserRepository;
 import com.projectpad.server1.service.ProductService;
 import com.projectpad.server1.service.UserService;
@@ -120,6 +121,7 @@ public class UserController {
     public UserPublic findByToken(@RequestHeader(value = "Authorization") String s) {
         logger.info("Get user by token request");
         String t = s.substring(7);
+        userService.unauthorizedUser(t);
         User userDb = userService.findByToken(t);
         return new UserPublic(
                 userDb.getId(),
@@ -127,6 +129,27 @@ public class UserController {
                 userDb.getEmail(),
                 userDb.getRole(),
                 t,
+                userDb.getPic());
+    }
+
+    @DeleteMapping("user/logout")
+    public UserPublic logoutUser(@RequestHeader(value = "Authorization") String token) {
+        logger.info("Logout user");
+        String t = token.substring(7);
+        User userDb = userService.findByToken(t);
+        try {
+            userService.deleteUserToken(t);
+            logger.info("Token deleted");
+        } catch (UserTokenNotFound e) {
+            logger.error(String.format("Token %s not found", t));
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Token not found", e);
+        }
+        return new UserPublic(
+                userDb.getId(),
+                userDb.getUserName(),
+                userDb.getEmail(),
+                userDb.getRole(),
+                null,
                 userDb.getPic());
     }
 }

@@ -6,10 +6,13 @@ import com.projectpad.server1.entity.UserToken;
 import com.projectpad.server1.exception.UserEmailExistsException;
 import com.projectpad.server1.exception.UserNameExistsException;
 import com.projectpad.server1.exception.UserNotFound;
+import com.projectpad.server1.exception.UserTokenNotFound;
 import com.projectpad.server1.repository.UserRepository;
 import com.projectpad.server1.repository.UserTokenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -66,5 +69,20 @@ public class UserService {
                 null,
                 u.getPic()
         );
+    }
+
+    public void deleteUserToken(String token) {
+        UserToken userToken = userTokenRepository.findByToken(token);
+        try {
+            userTokenRepository.deleteByTid(userToken.getTid());
+        } catch (Exception e) {
+            throw new UserTokenNotFound(String.format("Token %s not found", token));
+        }
+    }
+
+    public void unauthorizedUser(String token) {
+        if (!userTokenRepository.existsByToken(token)) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid auth token");
+        }
     }
 }
