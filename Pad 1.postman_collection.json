@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"userName\": \"Levi\",\n\t\"password\": \"jmecher\"\n}",
+					"raw": "{\n\t\"userName\": \"David\",\n\t\"password\": \"jmecher\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -20,13 +20,12 @@
 					}
 				},
 				"url": {
-					"raw": "https://padserver1.herokuapp.com/authenticate",
-					"protocol": "https",
+					"raw": "http://localhost:9191/authenticate",
+					"protocol": "http",
 					"host": [
-						"padserver1",
-						"herokuapp",
-						"com"
+						"localhost"
 					],
+					"port": "9191",
 					"path": [
 						"authenticate"
 					]
@@ -121,7 +120,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJMZXZpIiwiZXhwIjoxNTg3MTEzMjg3LCJpYXQiOjE1ODcwNzcyODd9.IZwJdTNHWOIvo6-8voQ9Tg2XmW-wM157PCs175dG6qc",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJEZW5pcyIsImV4cCI6MTU4ODQwNTQzMiwiaWF0IjoxNTg4MzY5NDMyfQ.O5yMmW8hdcGR10fnSfYzR9B-0g6muZLsLtugAipkRMk",
 						"type": "text"
 					}
 				],
@@ -147,7 +146,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJMZXZpIiwiZXhwIjoxNTg3MTE0NDAzLCJpYXQiOjE1ODcwNzg0MDN9.liKOwGEzHDMnrn6GRnywNqV4pdhlk7miXVIPzHGYhUs",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJEZW5pcyIsImV4cCI6MTU4ODQwNTQzMiwiaWF0IjoxNTg4MzY5NDMyfQ.O5yMmW8hdcGR10fnSfYzR9B-0g6muZLsLtugAipkRMk",
 						"type": "text"
 					}
 				],
@@ -173,7 +172,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJMZXZpIiwiZXhwIjoxNTg3NjgyOTYxLCJpYXQiOjE1ODc2NDY5NjF9.LukeAEYtuOG32PMI1ID-ecbsmZnAbLfHAvd7rJbKITk",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJEYXZpZCIsImV4cCI6MTU4ODQwNDYwMCwiaWF0IjoxNTg4MzY4NjAwfQ.5EcwoG66DozyC6LQfFwtLlmBXGbnWbfk_SuohPBRA2s",
 						"type": "text"
 					}
 				],
@@ -206,6 +205,143 @@
 					"port": "9191",
 					"path": [
 						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout User",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJEYXZpZCIsImV4cCI6MTU4ODQwNDYwMCwiaWF0IjoxNTg4MzY4NjAwfQ.5EcwoG66DozyC6LQfFwtLlmBXGbnWbfk_SuohPBRA2s",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9191/user/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"user",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Order",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJEYXZpZCIsImV4cCI6MTU4ODgwNjE0MSwiaWF0IjoxNTg4NzcwMTQxfQ.Jl0xraNCKKWH43R4YcMkmf7u-_Rmmzp_NdAA6SfQUao",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n\t{\n\t\t\"quantity\": 1,\n\t\t\"pid\": 1\n\t}, \n\t{\n\t\t\"quantity\": 2,\n\t\t\"pid\": 2\n\t},\n\t{\n\t\t\"quantity\": 1,\n\t\t\"pid\": 3\n\t}\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9191/order/post",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"order",
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get order by user id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJEYXZpZCIsImV4cCI6MTU4ODgxNzc0MCwiaWF0IjoxNTg4NzgxNzQwfQ.E4QO8qgeGPh347-hConwGs3a5MNm5-YC3YG3uQho-II",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9191/order/user/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"order",
+						"user",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change status order",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJEYXZpZCIsImV4cCI6MTU4ODgxNzc0MCwiaWF0IjoxNTg4NzgxNzQwfQ.E4QO8qgeGPh347-hConwGs3a5MNm5-YC3YG3uQho-II",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9191/order/100/status/pending",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"order",
+						"100",
+						"status",
+						"pending"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get products from order by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9191/order/8/product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9191",
+					"path": [
+						"order",
+						"8",
+						"product"
 					]
 				}
 			},
