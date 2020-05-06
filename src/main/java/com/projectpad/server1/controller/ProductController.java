@@ -25,7 +25,7 @@ public class ProductController {
 
     private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
 
-    @GetMapping("product/all")
+    @GetMapping("/product/all")
     public List<Product> getAllProducts(@RequestHeader("Authorization") String token) {
         String t = token.substring(7);
         userService.unauthorizedUser(t);
@@ -33,7 +33,7 @@ public class ProductController {
         return productService.getAllProducts();
     }
 
-    @GetMapping("product/{id}")
+    @GetMapping("/product/{id}")
     public Product getProductById(@PathVariable("id") int id, @RequestHeader("Authorization") String token) {
         String t = token.substring(7);
         userService.unauthorizedUser(t);

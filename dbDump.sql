@@ -55,14 +55,33 @@ VALUES (1, 'Apa Plata', 4.5, null, 500, 0, 'https://lamasa.auchan.ro/get_image.p
         'aluat de pizza, sos de rosii 5 linguri, mozzarella 70g, prosciutto sau sunca 6 felii, ciuperci 60g, masline 4bucati - optional, oregano uscat 1 lingurita',
         450, 1,
         'http://urgentpizza.ro/blog/wp-content/uploads/2014/05/prosciutto-e-funghi-urgenpizza-575x262.png'),
-       (6, 'Pizza Vegetariana', 24.5, 'roșii tăiate cubulețe, pastă de tomate, ceapă, oregano uscat, ardei gras verde',
+       (6, 'Pizza Vegetariana', 24.5, 'rosii taiate cubulete, pasta de tomate, ceapa, oregano uscat, ardei gras verde',
         600, 1, 'https://www.lalena.ro/images/uploaded/600x_Pizza-Vegetariana-ca-la-pizzerie-632.jpg'),
        (7, 'Pizza Fructe De Mare', 26.0, 'faina alba, drojdie de bere uscata, lingurita de zahar, praf de pier negru, sare fina',
         600, 1, 'https://atelieruldepizza.ro/wp-content/uploads/2017/02/REC_PRO_0033.png'),
        (8, 'Pizza Cu Ton', 20, 'faina, drojdie, ulei de masline, sare, ceapa rosie, mozzarella pentru pizza, masline negre, oregano uscat',
         600, 1, 'https://2.bp.blogspot.com/-vQGXL1viC70/UjAh5mZMM9I/AAAAAAAAUG0/6csGimdiLTo/s1600/DSCF8750.jpg'),
-       (9, 'Burger De Pui', 25, 'piept de pui dezosat, ceapă roșie, ulei de masline, piper, sare ',
+       (9, 'Burger De Pui', 25, 'piept de pui dezosat, ceapa rosie, ulei de masline, piper, sare ',
         600, 1, 'https://pizzahugo.ro/wp-content/uploads/2018/11/burger-de-pui-detaliu-min.jpg'),
        (10, 'Burger Vegetarian', 20, 'usturoi, ceapa rosie tocata, zeama de lamaie, chifle din faina integrala, sare si piper',
         600, 1, 'https://bobulverde.eu/wp-content/uploads/2018/06/burger-vegan-1440x960.jpg');
 
+DROP TABLE IF EXISTS order_items_tbl;
+
+CREATE TABLE order_items_tbl (
+    iid INTEGER PRIMARY KEY AUTO_INCREMENT,
+    quantity INTEGER,
+    pid INTEGER,
+    o_id_fik INTEGER
+);
+
+DROP TABLE IF EXISTS order_tbl;
+
+CREATE TABLE order_tbl (
+    o_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    total_price FLOAT,
+    nr_items INTEGER,
+    state VARCHAR(16),
+    u_id INTEGER,
+    data TIMESTAMP
+);

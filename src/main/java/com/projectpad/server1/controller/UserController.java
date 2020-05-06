@@ -132,7 +132,7 @@ public class UserController {
                 userDb.getPic());
     }
 
-    @DeleteMapping("user/logout")
+    @DeleteMapping("/user/logout")
     public UserPublic logoutUser(@RequestHeader(value = "Authorization") String token) {
         logger.info("Logout user");
         String t = token.substring(7);
