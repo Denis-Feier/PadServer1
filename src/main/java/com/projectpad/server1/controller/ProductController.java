@@ -27,16 +27,16 @@ public class ProductController {
 
     @GetMapping("/product/all")
     public List<Product> getAllProducts(@RequestHeader("Authorization") String token) {
-        String t = token.substring(7);
-        userService.unauthorizedUser(t);
+//        String t = token.substring(7);
+//        userService.unauthorizedUser(t);
         logger.info("All products request");
         return productService.getAllProducts();
     }
 
     @GetMapping("/product/{id}")
     public Product getProductById(@PathVariable("id") int id, @RequestHeader("Authorization") String token) {
-        String t = token.substring(7);
-        userService.unauthorizedUser(t);
+//        String t = token.substring(7);
+//        userService.unauthorizedUser(t);
         logger.info("Get product by id: {}", id);
         return productService.getProductById(id)
                 .orElseThrow(() -> {
