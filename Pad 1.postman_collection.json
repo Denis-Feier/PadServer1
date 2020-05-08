@@ -20,12 +20,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:9191/authenticate",
-					"protocol": "http",
+					"raw": "https://padserver1.herokuapp.com/authenticate",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"padserver1",
+						"herokuapp",
+						"com"
 					],
-					"port": "9191",
 					"path": [
 						"authenticate"
 					]
@@ -243,7 +244,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJEYXZpZCIsImV4cCI6MTU4ODgwNjE0MSwiaWF0IjoxNTg4NzcwMTQxfQ.Jl0xraNCKKWH43R4YcMkmf7u-_Rmmzp_NdAA6SfQUao",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJEYXZpZCIsImV4cCI6MTU4ODgzNjAyNiwiaWF0IjoxNTg4ODAwMDI2fQ.8r8qVMtyk8irBD1NBRyOyq3hnlq2dyFGCelwrfEaZCA",
 						"type": "text"
 					}
 				],
@@ -257,12 +258,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:9191/order/post",
-					"protocol": "http",
+					"raw": "https://padserver1.herokuapp.com/order/post",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"padserver1",
+						"herokuapp",
+						"com"
 					],
-					"port": "9191",
 					"path": [
 						"order",
 						"post"
