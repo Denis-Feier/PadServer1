@@ -39,7 +39,7 @@ public class OrderController {
     }
 
     @GetMapping("/order/user/{id}")
-    public List<OrderDB> getOrderByUserID(@RequestHeader("Authorization") String token,
+    public List<OrderDB> getOrderByUserID(//@RequestHeader("Authorization") String token,
                                           @PathVariable int id) {
         logger.info("Get orders for user with id: {}", id);
 //        String t = token.substring(7);
