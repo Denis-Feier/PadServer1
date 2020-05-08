@@ -26,7 +26,7 @@ public class ProductController {
     private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
 
     @GetMapping("/product/all")
-    public List<Product> getAllProducts(@RequestHeader("Authorization") String token) {
+    public List<Product> getAllProducts() {
 //        String t = token.substring(7);
 //        userService.unauthorizedUser(t);
         logger.info("All products request");
