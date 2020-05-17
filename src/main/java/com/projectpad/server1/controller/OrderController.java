@@ -4,12 +4,14 @@ import com.projectpad.server1.entity.OrderDB;
 import com.projectpad.server1.entity.PostData;
 import com.projectpad.server1.entity.Product;
 import com.projectpad.server1.exception.OrderNotFound;
+import com.projectpad.server1.service.MailService;
 import com.projectpad.server1.service.OrderService;
 import com.projectpad.server1.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -26,6 +28,9 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
+    @Autowired
+    private MailService mailService;
+
     @PostMapping("/order/post")
     public OrderDB addOrder(@RequestBody List<PostData> items,
                             @RequestHeader("Authorization") String token) {
@@ -35,7 +40,13 @@ public class OrderController {
         System.out.println(t);
         items.forEach( item -> System.out.println(item.toString()));
 
-        return orderService.addOrder(t, items);
+        OrderDB orderDB = orderService.addOrder(t, items);
+
+        ResponseEntity<String> response = mailService.postOrderMail(orderDB);
+
+        logger.info("Server2: " + response.getBody());
+
+        return orderDB;
     }
 
     @GetMapping("/order/user/{id}")
